@@ -32,7 +32,7 @@ const Navbar = ({openNav, showNav, closeNav} :Props) => {
  
   
   return (
-    <nav className={` ${navStyle }  h-[8vh] absolute z-2001 bg-white fixed w-[100vw]  `}>
+    <nav className={` ${navStyle } antialiased font-feature-settings letter-spacing: -0.05em h-[8vh] absolute z-2001 bg-white fixed w-[100vw]  `}>
       <div className='flex text-black/80 font-light tracking-wide drop-shadow-[0_0_25px_rgba(255,255,255,0.15)]  items-center h-full justify-between w-[90%] xl:w-[90%] border-b-[0.5px] border-solid border-gray-300   mx-auto'>
         {/* logo */}
         
@@ -91,12 +91,12 @@ const Navbar = ({openNav, showNav, closeNav} :Props) => {
     
         
       </div>
-      <div className='flex flex-col bg-[#08162F]/20  max-h-30 space-y-2  w-12 
+      {/* <div className='flex flex-col bg-[#08162F]/20  max-h-30 space-y-2  w-12 
        rounded-md opacity-[0.6]  items-center absolute bottom-3 px-2 py-2  right-4 fixed'>
         <Tgicon />
         <Image src={"images/wechat.svg"} alt="wechat" width={25} height={30} />
         <MailIcon />
-      </div>
+      </div> */}
     </nav>
   )
 }

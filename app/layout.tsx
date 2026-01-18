@@ -58,7 +58,7 @@ export default function RootLayout({
       <body
         className={`${helveticaNeue.className} ${geistMono.variable} antialiased`}
       >
-        <NavContainer />
+        {/* <NavContainer /> */}
         {children}
       </body>
     </html>

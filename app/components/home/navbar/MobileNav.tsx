@@ -20,7 +20,7 @@ console.log(openIndex )
 
 
   return (
-    <nav className={` ${navOpenStyles} h-full w-screen py-[8vh]   duration-600 z-1002  lg:hidden  w-screen   `} >
+    <nav className={` ${navOpenStyles} h-full w-screen py-[8vh] antialiased font-feature-settings letter-spacing: -0.05em  duration-600 z-1002  lg:hidden  w-screen   `} >
         {showNav && (
        <div  className={`  fixed  
         w-[80%] text-black sm:w-[60%] bg-[#9f7c4e]   z-1050 `}> 

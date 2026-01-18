@@ -4,19 +4,30 @@ import Shipping from './shipping/Shipping'
 import Intro from './intro/Intro'
 import Services from './services/Services'
 import Hero from './hero/Hero'
+
+import { DeliveryComparisonTable } from '../helpers/DelieveryTable'
+
+import DeliveryForm from '../DelieveryForm'
+import ShippingMethods from '../ShippingMethods'
+import ProcessTimeline from '../ProcessTimeline'
+import HeroSection from '../HeroSection'
+import CurrencyConverter from '../CurrensyConverter';
+import NorthernFoxNavbar from '../Navbar'
+
 function Home() {
   return (
     <div className=' antialiased font-feature-settings letter-spacing: -0.05em text-[#08162F]'>
      
-        <Hero />
-        <div className='pl-8 '> 
-        <Intro />
-        </div>
-       
-        <div className='w-auto overflow-hidden mb-10 '>
+       <NorthernFoxNavbar />
+        <HeroSection />
+     
+        {/* <div className='w-auto overflow-hidden mb-10 '>
          <Shipping />
-        </div>
-        <Services />
+        </div> */}
+        <ProcessTimeline />
+        <ShippingMethods />
+        <DeliveryForm />
+        <CurrencyConverter />
        
        
       

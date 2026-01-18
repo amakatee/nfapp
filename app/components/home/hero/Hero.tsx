@@ -22,7 +22,7 @@ const Hero = () => {
             
             <div className=' flex flex-col items-center space-y-10 justify-between md:px-[12rem] lg:px-[16rem]  z-800'>
               <div className='flex flex-col space-y-[-1rem]  text-white/90  font-bold drop-shadow-[0_0_25px_rgba(255,255,255,0.15)]'>
-                <h1 className='text-2xl md:text-3xl text-start '>
+                <h1 className='text-2xl md:text-3xl  text-start '>
                   <span>Логистика из Китая под ключ: </span> 
                   <span className='font-medium'>от поиска поставщика до вашего порога с возвратом НДС.</span>
                   </h1>
@@ -44,7 +44,7 @@ const Hero = () => {
         "
       >
         <span className="flex items-center gap-3">
-         Оставить заявку
+        получить консультацию
         </span>
 
         {/* Glow */}
