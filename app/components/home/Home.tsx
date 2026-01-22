@@ -12,18 +12,22 @@ import ShippingMethods from '../ShippingMethods'
 import ProcessTimeline from '../ProcessTimeline'
 import HeroSection from '../HeroSection'
 import CurrencyConverter from '../CurrensyConverter';
-import NorthernFoxNavbar from '../Navbar'
+import NorthernFoxNavbar from '../NavbarSection'
+import WhyChooseUsEnhanced from '../WhyChooseUs'
 
 function Home() {
   return (
     <div className=' antialiased font-feature-settings letter-spacing: -0.05em text-[#08162F]'>
      
        <NorthernFoxNavbar />
+      
         <HeroSection />
+        
      
         {/* <div className='w-auto overflow-hidden mb-10 '>
          <Shipping />
         </div> */}
+        <WhyChooseUsEnhanced />
         <ProcessTimeline />
         <ShippingMethods />
         <DeliveryForm />

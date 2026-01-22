@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${helveticaNeue.className} ${geistMono.variable} antialiased`}
+        className={`${helveticaNeue.className} ${geistMono.variable} antialiased `}
       >
         {/* <NavContainer /> */}
         {children}
