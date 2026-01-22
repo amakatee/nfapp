@@ -1,148 +1,106 @@
-// components/TextLogoSVG.tsx
+// components/NFLogo.tsx
 import React from 'react';
 
-interface TextLogoSVGProps {
+interface NFLogoProps {
   className?: string;
-  width?: number;
-  height?: number;
-  primaryColor?: string;
-  secondaryColor?: string;
+  variant?: 'default' | 'minimal' | 'icon';
+  size?: 'sm' | 'md' | 'lg';
 }
 
-const TextLogoSVG: React.FC<TextLogoSVGProps> = ({
-  className = '',
-  width = 180,
-  height = 80,
-  primaryColor = '#003f7f',
-  secondaryColor = '#4b5563' 
-}) => {
+const NFLogo = ({ 
+  className = '', 
+  variant = 'default',
+  size = 'sm'
+}: NFLogoProps) => {
+  const sizeClasses = {
+    sm: 'h-8',
+    md: 'h-12',
+    lg: 'h-16'
+  };
+
+  if (variant === 'minimal') {
+    return (
+      <div className={`flex items-center ${className}`}>
+        {/* Минималистичный вариант */}
+        <div className="relative">
+          <div className="w-9 h-9 rounded-xs bg-gradient-to-br from-blue-600 to-blue-500 shadow-sm flex items-center justify-center">
+            <span className="text-white font-bold text-lg">北</span>
+          </div>
+        </div>
+        <div className="ml-3">
+          <div className="flex items-baseline">
+            <span className="text-gray-900 font-bold text-xl">狐</span>
+            <div className="ml-2 flex flex-col">
+              <span className="text-gray-700 font-semibold text-sm -mb-1">NORTHERN</span>
+              <span className="text-gray-700 font-semibold text-sm">FOX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === 'icon') {
+    return (
+      <div className={`flex items-center ${className}`}>
+        {/* Иконка вариант */}
+        <div className="relative group">
+          <div className="w-9 h-10 rounded-xl bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 shadow-md flex items-center justify-center transform transition-transform duration-200 group-hover:scale-105">
+            <span className="text-white font-bold text-xl">北狐</span>
+          </div>
+          <div className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-blue-400 opacity-50"></div>
+        </div>
+      </div>
+    );
+  }
+
+  // Default variant
   return (
-    <div className={className}>
-      <svg
-        width={width}
-        height={height}
-        viewBox="0 0 300 80"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Chinese Characters - Stylized */}
-        <text
-          x="10"
-          y="55"
-          fontFamily="'Noto Sans SC', 'Microsoft YaHei', sans-serif"
-          fontSize="48"
-          fontWeight="700"
-          fill={primaryColor}
-        >
-          北狐
-        </text>
+    <div className={`flex items-center ${className}`}>
+      {/* Основной логотип */}
+      <div className="relative">
+        {/* Градиентный контейнер */}
+        <div className={`${sizeClasses[size]} aspect-square rounded-md bg-[#193060] flex items-center justify-center overflow-hidden group hover:shadow-lg transition-shadow duration-300`}>
+          {/* Внутренний блеск */}
+          
+          {/* Иероглиф 北 */}
+          <span className="text-white font-bold relative z-10 text-md md:text-3xl group-hover:scale-105 transition-transform duration-300">
+            北
+          </span>
+          
+          {/* Тонкая рамка */}
+          
+        </div>
         
-        {/* Vertical Separator */}
-        <line
-          x1="110"
-          y1="15"
-          x2="110"
-          y2="65"
-          stroke={secondaryColor}
-          strokeWidth="1"
-          strokeOpacity="0.3"
-        />
+        {/* Декоративные элементы */}
         
-        {/* English Text */}
-        <g>
-          <text
-            x="130"
-            y="35"
-            fontFamily="'Inter', 'Segoe UI', sans-serif"
-            fontSize="28"
-            fontWeight="600"
-            letterSpacing="2"
-            fill={primaryColor}
-            
-          >
-            Northern
-          </text>
-          <text
-            x="130"
-            y="60"
-            fontFamily="'Inter', 'Segoe UI', sans-serif"
-            fontSize="24"
-            fontWeight="300"
-            letterSpacing="3"
-            fill={primaryColor}
-            
-          >
-            Fox
-          </text>
-        </g>
+      </div>
+      
+      {/* Текстовая часть */}
+      <div className="ml-1 flex flex-col ">
+        <div className="flex mt-0 items-center">
+          {/* Кандзи 狐 */}
+          <span className="text-[#050b1e] font-bold  text-md md:text-3xl tracking-tight">
+            狐
+          </span>
+          
+          {/* Английский текст */}
+          <div className="ml-1 flex ">
+            <span className="text-gray-800  font-semibold text-base md:text-lg tracking-wider -mb-1">
+              Northern
+            </span>
+            <span className="text-gray-800 font-semibold text-[#050b1e] text-base md:text-lg tracking-wider">
+              Fox
+            </span>
+          </div>
+        </div>
         
-        {/* Tagline */}
-        {/* <text
-          x="10"
-          y="75"
-          fontFamily="'Inter', sans-serif"
-          fontSize="12"
-          fontWeight="300"
-          letterSpacing="4"
-          fill={secondaryColor}
-         
-        >
-          GLOBAL LOGISTICS
-        </text> */}
-      </svg>
+        {/* Акцентная линия */}
+        
+       
+      </div>
     </div>
   );
 };
 
-export const TextLogoMinimal: React.FC<TextLogoSVGProps> = (props) => {
-  return (
-    <div className={props.className}>
-      <svg
-        width={props.width || 200}
-        height={props.height || 60}
-        viewBox="0 0 200 60"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Compact version */}
-        <text
-          x="10"
-          y="40"
-          fontFamily="'Noto Sans SC', sans-serif"
-          fontSize="36"
-          fontWeight="700"
-          fill={props.primaryColor || '#1e40af'}
-        >
-          北狐
-        </text>
-        
-        <g>
-          <text
-            x="90"
-            y="28"
-            fontFamily="'Inter', sans-serif"
-            fontSize="20"
-            fontWeight="600"
-            letterSpacing="1"
-            fill={props.primaryColor || '#1e40af'}
-          >
-            NORTHERN
-          </text>
-          <text
-            x="90"
-            y="48"
-            fontFamily="'Inter', sans-serif"
-            fontSize="18"
-            fontWeight="300"
-            letterSpacing="2"
-            fill={props.primaryColor || '#1e40af'}
-          >
-            FOX
-          </text>
-        </g>
-      </svg>
-    </div>
-  );
-};
-
-export default TextLogoSVG;
+export default NFLogo;
