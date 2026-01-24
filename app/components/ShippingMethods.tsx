@@ -151,7 +151,7 @@ export default function ShippingMethodsMinimal() {
                     <td className="py-5 px-6">
                       <div className="flex items-center gap-2">
                         <Clock className="w-4 h-4 text-gray-400" />
-                        <span className="font-medium text-gray-900">
+                        <span className="font-medium  text-gray-900">
                           {method.timeRange}
                         </span>
                       </div>

@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
 import TextLogoSVG from './NFLogo';
+import {Logo} from './Logo'
 
 interface SubMenuItem {
   id: number;
@@ -22,9 +23,11 @@ export default function NorthernFoxNavbar() {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<number | null>(null);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [isUpperNavVisible, setIsUpperNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   
   const navbarRef = useRef<HTMLDivElement>(null);
+  const upperNavRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileOverlayRef = useRef<HTMLDivElement>(null);
   const dropdownRefs = useRef<Map<number, HTMLDivElement>>(new Map());
@@ -69,11 +72,45 @@ export default function NorthernFoxNavbar() {
     },
   ];
 
-  // Handle scroll effect - navbar hide/show with animation
+  // Upper navbar contact info
+  const contactInfo = {
+    phone: '+7 (495) 123-45-67',
+    email: 'info@northernfox.ru',
+    hours: '9:00-18:00 Пн-Пт'
+  };
+
+  // Handle scroll effect - main navbar hide/show with animation
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
+      // Handle upper nav visibility - only show at top 0
+      if (currentScrollY === 0 && !isUpperNavVisible) {
+        setIsUpperNavVisible(true);
+        if (upperNavRef.current) {
+          gsap.fromTo(upperNavRef.current,
+            { y: -40, opacity: 0 },
+            { 
+              y: 0, 
+              opacity: 1,
+              duration: 0.4,
+              ease: 'power3.out'
+            }
+          );
+        }
+      } else if (currentScrollY > 0 && isUpperNavVisible) {
+        setIsUpperNavVisible(false);
+        if (upperNavRef.current) {
+          gsap.to(upperNavRef.current, {
+            y: -40,
+            opacity: 0,
+            duration: 0.3,
+            ease: 'power3.in'
+          });
+        }
+      }
+      
+      // Handle main navbar visibility - original behavior
       if (currentScrollY < lastScrollY) {
         // Scrolling UP - show navbar from top
         if (!isNavbarVisible) {
@@ -110,22 +147,33 @@ export default function NorthernFoxNavbar() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY, isNavbarVisible]);
+  }, [lastScrollY, isNavbarVisible, isUpperNavVisible]);
 
-  // Reset navbar when at top of page
+  // Reset both navbars when at top of page
   useEffect(() => {
     const checkTopOfPage = () => {
-      if (window.scrollY === 0 && !isNavbarVisible) {
-        setIsNavbarVisible(true);
-        if (navbarRef.current) {
-          gsap.set(navbarRef.current, { y: 0, opacity: 1 });
+      if (window.scrollY === 0) {
+        // Show upper nav at top
+        if (!isUpperNavVisible) {
+          setIsUpperNavVisible(true);
+          if (upperNavRef.current) {
+            gsap.set(upperNavRef.current, { y: 0, opacity: 1 });
+          }
+        }
+        
+        // Show main nav at top
+        if (!isNavbarVisible) {
+          setIsNavbarVisible(true);
+          if (navbarRef.current) {
+            gsap.set(navbarRef.current, { y: 0, opacity: 1 });
+          }
         }
       }
     };
 
     window.addEventListener('scroll', checkTopOfPage);
     return () => window.removeEventListener('scroll', checkTopOfPage);
-  }, [isNavbarVisible]);
+  }, [isNavbarVisible, isUpperNavVisible]);
 
   // Close dropdown when clicking outside (desktop)
   useEffect(() => {
@@ -319,22 +367,89 @@ export default function NorthernFoxNavbar() {
 
   return (
     <>
-      {/* Main Navbar */}
+      {/* Upper Navbar - Contact Info (Only shows at scroll position 0) */}
+      {isUpperNavVisible && (
+  <div 
+    ref={upperNavRef}
+    className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-gray-950 to-blue-950  border-b border-gray-100"
+  >
+    <div className="container mx-auto px-4">
+      <div className="flex items-center justify-between h-10">
+        {/* Left: Contact Info - Guangzhou Address */}
+        <div className="flex items-center space-x-4 md:space-x-6 text-sm">
+          {/* Guangzhou Address */}
+          <div className="hidden lg:flex items-center gap-2">
+            <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span className="text-white">Гуанчжоу, Тяньхэ</span>
+          </div>
+          
+          {/* Phone Number */}
+          <div className="flex items-center gap-2">
+            <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            <span className="text-white">+7 (495) 123-45-67</span>
+          </div>
+          
+          {/* Email */}
+          <div className="hidden md:flex items-center gap-2">
+            <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span className="text-white">info@northernfox.ru</span>
+          </div>
+        </div>
+
+        {/* Right: CTA Button & Social Media */}
+        <div className="flex items-center space-x-3 md:space-x-4">
+          {/* CTA Button */}
+          {/* <button className="hidden md:inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-medium rounded-full border border-blue-200 transition-colors duration-200 outline-none">
+           
+            Запросить расчет
+          </button> */}
+          
+          {/* Social Media Icons */}
+          <div className="flex items-center space-x-2">
+            {/* WeChat */}
+            <button className="p-1.5 hover:bg-blue-50 rounded-full transition-colors duration-200 outline-none">
+              <svg className="w-6 h-6 text-blue-600"  fill='white' viewBox="0 0 24 24">
+                <path d="M9.5,4C5.4,4,2,6.6,2,10c0,1.4,0.6,2.7,1.5,3.8l-0.5,2.3l2.4-0.8c0.9,0.4,1.9,0.6,2.9,0.6c4.1,0,7.5-2.6,7.5-6C15.5,6.6,12.1,4,9.5,4z M6.8,8.9c0-0.6,0.5-1,1-1s1,0.5,1,1s-0.5,1-1,1S6.8,9.5,6.8,8.9z M12.3,11.9c-0.5,0-1-0.5-1-1s0.5-1,1-1s1,0.5,1,1S12.8,11.9,12.3,11.9z"/>
+                <path d="M17.5,11c2.5,0,4.5-1.8,4.5-4s-2-4-4.5-4s-4.5,1.8-4.5,4S15,11,17.5,11z M16.2,7.5c0-0.3,0.3-0.5,0.7-0.5c0.4,0,0.7,0.2,0.7,0.5s-0.3,0.5-0.7,0.5C16.5,8,16.2,7.8,16.2,7.5z M19.3,9c-0.4,0-0.7-0.2-0.7-0.5s0.3-0.5,0.7-0.5c0.4,0,0.7,0.2,0.7,0.5S19.7,9,19.3,9z"/>
+              </svg>
+            </button>
+            
+            {/* Telegram */}
+            <button className="p-1.5 hover:bg-blue-50  rounded-full transition-colors duration-200 outline-none">
+              <svg className="w-5 h-5 text-blue-600" fill='white' viewBox="0 0 24 24"> 
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.57-1.38-.93-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.06-.2-.07-.06-.17-.04-.24-.02-.1.02-1.79 1.14-5.06 3.35-.48.33-.92.5-1.31.49-.43-.01-1.27-.24-1.89-.44-.76-.24-1.36-.37-1.31-.78.03-.24.37-.48 1.01-.74 3.98-1.66 6.64-2.76 7.97-3.31 3.38-1.38 4.08-1.62 4.54-1.62.1 0 .32.02.46.12.11.08.15.19.14.3-.02.06-.02.11-.03.17z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+      {/* Main Navbar - Original behavior */}
       <nav 
         ref={navbarRef}
-        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm"
-        style={{ transform: 'translateY(0)' }}
+        className={`fixed ${isUpperNavVisible ? 'top-10' : 'top-0'} left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm transition-top duration-300`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
+            
             <div className="flex items-center">
               <Link 
                 href="/" 
                 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight"
                 onClick={() => handleNavClick('/')}
               >
-                <TextLogoSVG />
+               <Logo />
               </Link>
             </div>
 
@@ -401,7 +516,7 @@ export default function NorthernFoxNavbar() {
               
               {/* CTA Button */}
               <button 
-                className="px-6 py-2 bg-[#003f7f] text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors duration-200 outline-none"
+                className="px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-medium rounded-full hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 outline-none"
               >
                 Рассчитать стоимость
               </button>
@@ -421,8 +536,8 @@ export default function NorthernFoxNavbar() {
         </div>
       </nav>
 
-      {/* Spacer for fixed navbar */}
-      <div className="h-16 md:h-20" />
+      {/* Dynamic spacer for fixed navbar */}
+      <div className={`${isUpperNavVisible ? 'h-26 md:h-30' : 'h-16 md:h-20'}`} />
 
       {/* Mobile Menu Overlay */}
       <div
@@ -435,7 +550,7 @@ export default function NorthernFoxNavbar() {
       {/* Mobile Menu */}
       <div
         ref={mobileMenuRef}
-        className="fixed top-16 left-0 h-[calc(100vh-4rem)] w-full bg-white z-40 transform -translate-x-full md:hidden"
+        className={`fixed ${isUpperNavVisible ? 'top-26' : 'top-16'} left-0 h-[calc(100vh-6.5rem)] w-full bg-white z-40 transform -translate-x-full md:hidden`}
       >
         <div className="h-full flex flex-col overflow-y-auto">
           {/* Menu Items */}
@@ -449,7 +564,7 @@ export default function NorthernFoxNavbar() {
                         onClick={() => handleMobileDropdown(item.id)}
                         className="w-full text-left py-5 flex items-center justify-between outline-none"
                       >
-                        <span className="text-xl font-medium text-gray-900">
+                        <span className="text-xl  font-medium text-gray-900">
                           {item.title}
                         </span>
                         <svg 
@@ -491,18 +606,41 @@ export default function NorthernFoxNavbar() {
               ))}
             </div>
 
-            {/* Mobile CTA */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
+            {/* Mobile Contact Info */}
+            <div className="mt-8 pt-8 border-t border-gray-200">
+              <div className="space-y-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-lg font-medium text-gray-900">{contactInfo.phone}</p>
+                    <p className="text-sm text-gray-600">Телефон для связи</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-lg font-medium text-gray-900">{contactInfo.email}</p>
+                    <p className="text-sm text-gray-600">Электронная почта</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile CTA */}
               <button 
                 onClick={closeMobileMenu}
-                className="w-full py-4 bg-[#003f7f] text-white text-lg font-medium rounded-lg mb-4 outline-none hover:bg-gray-800"
+                className="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-lg font-medium rounded-lg mb-4 outline-none hover:from-blue-700 hover:to-cyan-700"
               >
                 Рассчитать стоимость
               </button>
-              <div className="text-gray-600">
-                <p className="mb-2 text-lg">+7 (XXX) XXX-XX-XX</p>
-                <p className="text-lg">info@northernfox.ru</p>
-              </div>
             </div>
           </div>
 

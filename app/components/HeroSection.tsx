@@ -46,14 +46,14 @@ export default function NorthernFoxHeroAnimated() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#cee0f4]  ">
+    <div className="min-h-screen bg-white  ">
       {/* Hero container - total 80vh for all image containers */}
       <div className="flex flex-col  min-h-screen space-y-8">
         
         {/* First image container - 1/3 of 80vh */}
         <div 
           ref={image1Ref}
-          className="flex-1 min-h-[35vh] relative overflow-hidden bg-[#cee0f4] border-[2px] border-[#050b1e]"
+          className="flex-1 min-h-[35vh] relative overflow-hidden bg-white border-[2px] border-[#050b1e]"
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-[100vw] md:w-[60vw] h-[60vh] max-w-4xl">
@@ -112,10 +112,10 @@ export default function NorthernFoxHeroAnimated() {
       {/* Content Section - Takes full width on mobile, 50% on medium+ screens */}
       <div 
         ref={contentRef}
-        className="w-full md:w-1/2 min-h-[45vh] md:min-h-full flex items-center justify-center  bg-[#cee0f4] p-8 md:p-12 order-2 md:order-2"
+        className="w-full md:w-1/2 min-h-[45vh] md:min-h-full flex items-center justify-center  bg-white p-8 md:p-12 order-2 md:order-2"
       >
         <div className="max-w-lg">
-        <h2 className="text-4xl md:text-4xl lg:text-5xl font-medium text-[#050b1e] mb-8 leading-tight tracking-tighter">
+        <h2 className="text-4xl md:text-4xl lg:text-5xl  font-bold text-[#050b1e] mb-8 leading-tight tracking-tight">
     Бизнес-логистика из Китая
   </h2>
   

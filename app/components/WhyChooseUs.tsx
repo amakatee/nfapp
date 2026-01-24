@@ -1,5 +1,4 @@
 'use client';
-
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -157,12 +156,11 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full  bg-[#cee0f4] overflow-hidden">
+    <section ref={sectionRef} className="relative w-full   overflow-hidden">
       {/* Декоративные элементы фона */}
-      <h2 ref={titleRef} className="text-2xl pl-7 lg:pt-10 md:text-2xl lg:text-5xl  font-bold text-[#003f7f] mb-4 mt-8 tracking-tight">
+      <h2 ref={titleRef} className="text-3xl pl-7 lg:pt-10 md:text-2xl  lg:text-5xl  font-bold text-[#003f7f] mb-4 mt-8 md:mt-15 md:mb-8 tracking-tighter">
             Почему выбирают нас
           </h2>
-      <div className="floating-bg-1 absolute -top-20 -left-20 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl" />
       <div className="floating-bg-2 absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
       
       <div className="relative max-w-[100vw]  bg-gradient-to-br from-[#003f7f] via-[#0050a0] to-[#0066cc]  z-10">
@@ -205,18 +203,8 @@ export default function WhyChooseUs() {
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 priority
               />
+               <div className="absolute inset-0 bg-gradient-to-b from-[#0066cc]/15 to-gray-950" />
               
-              {/* Градиентная маска */}
-              
-              {/* Текст на изображении */}
-              {/* <div className="absolute bottom-0 left-0 right-0 p-8">
-                <div className="bg-gradient-to-r from-cyan-500/20 to-blue-600/20 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                  <h4 className="text-2xl font-bold text-white mb-2">Премиум логистика</h4>
-                  <p className="text-white/90 text-lg">От Китая до вашего склада</p>
-                </div>
-              </div> */}
-              
-              {/* Декоративные элементы */}
            
             </div>
           </div>
@@ -224,6 +212,7 @@ export default function WhyChooseUs() {
 
        
       </div>
+
     </section>
   );
 }

@@ -204,42 +204,6 @@ export default function VATSection() {
             </div>
           </div>
         </div>
-
-        {/* CTA Section */}
-        <div className="relative">
-          <div className="relative bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl overflow-hidden">
-            <div className="absolute inset-0 bg-grid-white/10"></div>
-            <div className="relative px-8 py-12 lg:py-16">
-              <div className="max-w-3xl mx-auto text-center">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-6">
-                  <Scale className="w-4 h-4" />
-                  Начните экономить на налогах
-                </div>
-                <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6">
-                  Готовы к легальному импорту с вычетом НДС?
-                </h3>
-                <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-                  Получите консультацию по оптимизации налогов и организации поставок из Китая
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-200 transform hover:-translate-y-0.5">
-                    <Users className="w-5 h-5" />
-                    Получить консультацию
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer Note */}
-        <div className="mt-12 text-center">
-          <p className="text-gray-500 text-sm">
-            Работаем с 2018 года.
-          </p>
-        </div>
       </div>
 
       {/* Custom Styles for Grid Pattern */}

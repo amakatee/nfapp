@@ -5,6 +5,7 @@ import "./globals.css";
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import NavContainer from "./components/home/navbar/NavContainer";
+import AIHelperWidget from "./components/AiHelperWidget";
 
 const helveticaNeue = localFont({
   src:[
@@ -60,6 +61,7 @@ export default function RootLayout({
       >
         {/* <NavContainer /> */}
         {children}
+        <AIHelperWidget />
       </body>
     </html>
   );
