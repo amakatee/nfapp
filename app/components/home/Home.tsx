@@ -9,7 +9,6 @@ import { DeliveryComparisonTable } from '../helpers/DelieveryTable'
 
 import DeliveryForm from '../DelieveryForm'
 import ShippingMethod from '../ShippingMethod'
-import ProcessTimeline from '../ProcessTimeline'
 import HeroSection from '../HeroSection'
 import CurrencyConverter from '../CurrensyConverter';
 import NorthernFoxNavbar from '../NavbarSection'
@@ -34,7 +33,7 @@ function Home() {
          <Shipping />
         </div> */}
        
-        {/* <ProcessTimeline /> */}
+      
     
         <DeliveryForm />
         <CurrencyConverter />
