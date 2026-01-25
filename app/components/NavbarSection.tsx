@@ -371,63 +371,77 @@ export default function NorthernFoxNavbar() {
       {isUpperNavVisible && (
   <div 
     ref={upperNavRef}
-    className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-gray-950 to-blue-950  border-b border-gray-100"
+    className="fixed top-0 left-0 right-0 z-50 bg-[#193060]"
   >
     <div className="container mx-auto px-4">
-      <div className="flex items-center justify-between h-10">
-        {/* Left: Contact Info - Guangzhou Address */}
-        <div className="flex items-center space-x-4 md:space-x-6 text-sm">
-          {/* Guangzhou Address */}
-          <div className="hidden lg:flex items-center gap-2">
-            <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span className="text-white">Гуанчжоу, Тяньхэ</span>
-          </div>
-          
+      {/* Desktop Layout */}
+      <div className="hidden md:flex items-center justify-between h-10">
+        {/* Left: Company Name and Contact Info */}
+        <div className="flex items-center space-x-6 md:space-x-8 text-sm">
           {/* Phone Number */}
           <div className="flex items-center gap-2">
-            <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            <span className="text-white">+7 (495) 123-45-67</span>
+            <span className="text-white">+13232813</span>
           </div>
           
           {/* Email */}
-          <div className="hidden md:flex items-center gap-2">
-            <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex items-center gap-2">
+            <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <span className="text-white">info@northernfox.ru</span>
+            <span className="text-white">info@northenfox.com</span>
+          </div>
+          
+          {/* Address */}
+          <div className="hidden lg:flex items-center gap-2">
+            <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span className="text-white">Guanzhou tianhe</span>
           </div>
         </div>
 
-        {/* Right: CTA Button & Social Media */}
-        <div className="flex items-center space-x-3 md:space-x-4">
-          {/* CTA Button */}
-          {/* <button className="hidden md:inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-medium rounded-full border border-blue-200 transition-colors duration-200 outline-none">
-           
-            Запросить расчет
-          </button> */}
-          
-          {/* Social Media Icons */}
-          <div className="flex items-center space-x-2">
-            {/* WeChat */}
-            <button className="p-1.5 hover:bg-blue-50 rounded-full transition-colors duration-200 outline-none">
-              <svg className="w-6 h-6 text-blue-600"  fill='white' viewBox="0 0 24 24">
-                <path d="M9.5,4C5.4,4,2,6.6,2,10c0,1.4,0.6,2.7,1.5,3.8l-0.5,2.3l2.4-0.8c0.9,0.4,1.9,0.6,2.9,0.6c4.1,0,7.5-2.6,7.5-6C15.5,6.6,12.1,4,9.5,4z M6.8,8.9c0-0.6,0.5-1,1-1s1,0.5,1,1s-0.5,1-1,1S6.8,9.5,6.8,8.9z M12.3,11.9c-0.5,0-1-0.5-1-1s0.5-1,1-1s1,0.5,1,1S12.8,11.9,12.3,11.9z"/>
-                <path d="M17.5,11c2.5,0,4.5-1.8,4.5-4s-2-4-4.5-4s-4.5,1.8-4.5,4S15,11,17.5,11z M16.2,7.5c0-0.3,0.3-0.5,0.7-0.5c0.4,0,0.7,0.2,0.7,0.5s-0.3,0.5-0.7,0.5C16.5,8,16.2,7.8,16.2,7.5z M19.3,9c-0.4,0-0.7-0.2-0.7-0.5s0.3-0.5,0.7-0.5c0.4,0,0.7,0.2,0.7,0.5S19.7,9,19.3,9z"/>
+        {/* Right: Social Media Icons */}
+        <div className="flex items-center space-x-3">
+          {/* Empty for now */}
+        </div>
+      </div>
+
+      {/* Mobile Layout - Column Design */}
+      <div className="md:hidden py-1">
+        <div className="flex flex-col items-center space-y-1">
+          {/* Phone and Email on same line */}
+          <div className="flex flex-wrap items-center  gap-x-4 gap-y-1">
+            {/* Phone */}
+            <div className="flex items-center gap-1">
+              <svg className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-            </button>
+              <span className="text-white text-xs">+123243423</span>
+            </div>
             
-            {/* Telegram */}
-            <button className="p-1.5 hover:bg-blue-50  rounded-full transition-colors duration-200 outline-none">
-              <svg className="w-5 h-5 text-blue-600" fill='white' viewBox="0 0 24 24"> 
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.57-1.38-.93-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.06-.2-.07-.06-.17-.04-.24-.02-.1.02-1.79 1.14-5.06 3.35-.48.33-.92.5-1.31.49-.43-.01-1.27-.24-1.89-.44-.76-.24-1.36-.37-1.31-.78.03-.24.37-.48 1.01-.74 3.98-1.66 6.64-2.76 7.97-3.31 3.38-1.38 4.08-1.62 4.54-1.62.1 0 .32.02.46.12.11.08.15.19.14.3-.02.06-.02.11-.03.17z"/>
+            {/* Email */}
+            <div className="flex items-center gap-1">
+              <svg className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-            </button>
+              <span className="text-white text-xs">info@northenfox.com</span>
+            </div>
           </div>
+          
+          {/* Address on next line */}
+          <div className="flex items-start gap-1">
+            <svg className="w-3.5 h-3.5 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span className="text-white text-xs">Guangzhou tian he</span>
+          </div>
+
+         
         </div>
       </div>
     </div>
@@ -437,7 +451,7 @@ export default function NorthernFoxNavbar() {
       {/* Main Navbar - Original behavior */}
       <nav 
         ref={navbarRef}
-        className={`fixed ${isUpperNavVisible ? 'top-10' : 'top-0'} left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm transition-top duration-300`}
+        className={`fixed ${isUpperNavVisible ? 'top-12' : 'top-0'} left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm transition-top duration-300`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -516,7 +530,7 @@ export default function NorthernFoxNavbar() {
               
               {/* CTA Button */}
               <button 
-                className="px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-medium rounded-full hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 outline-none"
+                className="px-6 py-2 bg-[#193060] text-white text-sm font-medium rounded-full hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 outline-none"
               >
                 Рассчитать стоимость
               </button>
@@ -610,7 +624,7 @@ export default function NorthernFoxNavbar() {
             <div className="mt-8 pt-8 border-t border-gray-200">
               <div className="space-y-4 mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-[#193060] rounded-full flex items-center justify-center">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
@@ -622,7 +636,7 @@ export default function NorthernFoxNavbar() {
                 </div>
                 
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-[#193060] rounded-full flex items-center justify-center">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
@@ -637,7 +651,7 @@ export default function NorthernFoxNavbar() {
               {/* Mobile CTA */}
               <button 
                 onClick={closeMobileMenu}
-                className="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-lg font-medium rounded-lg mb-4 outline-none hover:from-blue-700 hover:to-cyan-700"
+                className="w-full py-4 bg-[#193060] text-white text-lg font-medium rounded-lg mb-4 outline-none hover:from-blue-700 hover:to-cyan-700"
               >
                 Рассчитать стоимость
               </button>
@@ -645,7 +659,7 @@ export default function NorthernFoxNavbar() {
           </div>
 
           {/* Footer */}
-          <div className="p-6 border-t border-gray-100 bg-gray-50">
+          <div className="p-6 border-t mb-15 border-gray-100 bg-gray-50">
             <div className="text-gray-500">
               <p className="font-medium">© {new Date().getFullYear()} Northern Fox Logistics</p>
               <p className="mt-1 text-sm">Логистика из Китая в Россию</p>
