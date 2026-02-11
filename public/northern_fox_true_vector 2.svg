@@ -1,0 +1,16 @@
+
+<svg width="800" height="300" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .fox { fill:#111; }
+    .text-cn { font-family: 'Helvetica', sans-serif; font-size: 72px; font-weight: 600; fill:#111; }
+    .text-en { font-family: 'Helvetica', sans-serif; font-size: 28px; letter-spacing: 4px; fill:#111; }
+  </style>
+
+  <!-- Fox Icon -->
+  <path class="fox" d="M80 200 L150 120 L210 140 L250 120 L300 160 L250 170 L210 200 L160 210 Z"/>
+  <path class="fox" d="M150 120 L180 80 L210 120 Z"/>
+
+  <!-- Text -->
+  <text x="340" y="170" class="text-cn">北狐</text>
+  <text x="340" y="220" class="text-en">NORTHERN FOX</text>
+</svg>

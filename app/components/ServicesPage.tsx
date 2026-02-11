@@ -195,14 +195,12 @@ const ServicesSection: React.FC = () => {
     { icon: <CheckIcon />, title: 'Официальный агент в Китае', description: 'Представительство с полными юридическими полномочиями' },
     { icon: <CheckIcon />, title: 'Организация экспорта с нулевой ставкой НДС', description: 'Легальная оптимизация налоговых обязательств' },
     { icon: <CheckIcon />, title: 'Подготовка полного комплекта документов', description: 'Все необходимые бумаги для таможенного оформления' },
-    { icon: <CheckIcon />, title: 'Экспортное таможенное оформление', description: 'Полное сопровождение на всех этапах экспорта' }
   ];
 
   const benefitItems = [
     { icon: <ArrowRightIcon />, title: 'Ввоз товара как законный импортер', description: 'Полная легализация поставок в РФ' },
     { icon: <ArrowRightIcon />, title: 'Право на полный вычет НДС (20-22%)', description: 'Законная экономия на налоговых платежах' },
     { icon: <ArrowRightIcon />, title: 'Прямая экономия на налогах', description: 'Снижение себестоимости товаров' },
-    { icon: <ArrowRightIcon />, title: 'Основа для масштабирования бизнеса', description: 'Стабильные поставки и прозрачная документация' }
   ];
 
   return (

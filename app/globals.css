@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/autoplay';
 
 :root {
   --background: #ffffff;
@@ -159,3 +163,10 @@ button,
 .gradient-text {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600;
 }
+
+
+
+
+
+
+

@@ -1,10 +1,10 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react';
 import gsap from 'gsap';
-import Link from 'next/link';
 import TextLogoSVG from './NFLogo';
 import {Logo} from './Logo'
-
+import Image from 'next/image';
+import Link from 'next/link';
 interface SubMenuItem {
   id: number;
   title: string;
@@ -89,7 +89,7 @@ export default function NorthernFoxNavbar() {
         setIsUpperNavVisible(true);
         if (upperNavRef.current) {
           gsap.fromTo(upperNavRef.current,
-            { y: -40, opacity: 0 },
+            { y: -40, opacity: 1 },
             { 
               y: 0, 
               opacity: 1,
@@ -103,7 +103,7 @@ export default function NorthernFoxNavbar() {
         if (upperNavRef.current) {
           gsap.to(upperNavRef.current, {
             y: -40,
-            opacity: 0,
+            opacity: 1,
             duration: 0.3,
             ease: 'power3.in'
           });
@@ -117,7 +117,7 @@ export default function NorthernFoxNavbar() {
           setIsNavbarVisible(true);
           if (navbarRef.current) {
             gsap.fromTo(navbarRef.current,
-              { y: -100, opacity: 0 },
+              { y: -100, opacity: 1 },
               { 
                 y: 0, 
                 opacity: 1,
@@ -457,13 +457,15 @@ export default function NorthernFoxNavbar() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             
-            <div className="flex items-center">
+            <div className="flex items-center  ">
+          
               <Link 
                 href="/" 
-                className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight"
+                className=""
                 onClick={() => handleNavClick('/')}
               >
                <Logo />
+             
               </Link>
             </div>
 

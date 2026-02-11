@@ -16,11 +16,13 @@ import WhyChooseUsEnhanced from '../WhyChooseUs'
 import ServicesPage from '../ServicesPage'
 
 
+
 function Home() {
   return (
     <div className=' antialiased font-feature-settings letter-spacing: -0.05em text-[#08162F]'>
-      
-       <NorthernFoxNavbar />
+{/*       
+       <NorthernFoxNavbar /> */}
+
       
         <HeroSection />
         <WhyChooseUsEnhanced />
@@ -36,7 +38,7 @@ function Home() {
       
     
         <DeliveryForm />
-        <CurrencyConverter />
+        {/* <CurrencyConverter /> */}
        
        
       

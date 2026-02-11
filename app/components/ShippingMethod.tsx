@@ -361,7 +361,7 @@ const ShippingMethods: React.FC = () => {
                         {method.suitableFor.map((item, index) => (
                           <span
                             key={index}
-                            className="px-3 py-1.5 bg-blue-900/30 text-blue-200 text-xs font-medium rounded-lg border border-blue-700/30"
+                            className="px-3 py-1.5  text-blue-200 text-xs font-medium rounded-lg border border-blue-700/10"
                           >
                             {item}
                           </span>
