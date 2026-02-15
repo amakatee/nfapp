@@ -5,6 +5,8 @@ import "./globals.css";
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
+import Navbar from "./components/home/navbar/Nav";
+import NorthernFoxNavbar from "./components/NavbarSection";
 
 const helveticaNeue = localFont({
   src:[
@@ -58,9 +60,9 @@ export default function RootLayout({
       <body
         className={`${helveticaNeue.className} ${geistMono.variable} bg-[#193060] antialiased`}
       >
-        <ClientLayoutWrapper>
+       <NorthernFoxNavbar />
           {children}
-        </ClientLayoutWrapper>
+        
       </body>
     </html>
   );
