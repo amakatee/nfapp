@@ -14,8 +14,24 @@ import CurrencyConverter from '../CurrensyConverter';
 import NorthernFoxNavbar from '../NavbarSection'
 import WhyChooseUsEnhanced from '../WhyChooseUs'
 import ServicesPage from '../ServicesPage'
+import {Slider} from "../../components/slider"
 
-
+const slides =[
+  {
+    id:1,
+    title: "Northern Fox",
+    description: "hello",
+    imageUrl:"/images/msc.jpeg",
+    altText: "Dsfsdf"
+  },
+  {
+    id:2,
+    title: "Nortdsdhern Fox",
+    description: "hello",
+    imageUrl:"/images/gz.JPG",
+    altText: "Dsfsdf"
+  }
+]
 
 function Home() {
   return (
@@ -23,7 +39,7 @@ function Home() {
 {/*       
        <NorthernFoxNavbar /> */}
 
-      
+        {/* <Slider slides={slides} /> */}
         <HeroSection />
         <WhyChooseUsEnhanced />
         <ServicesPage />
